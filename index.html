@@ -1,44 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>RENAME: DS4440 Final Project</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-    <link href="style.css" rel="stylesheet" type="text/css">
-  </head>
-  <body>
-    <h1 style="text-align: center;">Title</h1>
-    <p style="text-align: center;">Ryan Dombroski, Tim Wang</p>
-    
-    <h2>1. Introduction</h2>
-    <p>Describe the main question that you are asking in your project.
-      Describe the problem that you are taking on that builds on the paper.
-      For example, you can try seeing if the method in the paper can be applied to some new data, or you can measure or visualize the methods of the paper in your own way that varies from what was done in the paper. 
-      Or you investigate whether it is possible to build a new application or new method that incorporates or extends the work in the paper. </p>
-    
-    <h2>2. Literature review</h2>
-    <p>Review the paper, i.e, summarize and explain the paper in a paragraph or two, and be sure to include the main takeaways from the paper as you see it. 
-      This review should include a couple words that mention how the paper is related to your project.</p>
+<head>
+<title>Searching for Activation Functions</title>
+<meta property="og:title" content="Better Than ReLU?" />
+<meta name="twitter:title" content="Better Than ReLU?" />
+<meta name="description" content="Surveying modern activation functions." />
+<meta property="og:description" content="Surveying modern activation functions." />
+<meta name="twitter:description" content="Surveying modern activation functions." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- bootstrap for mobile-friendly layout -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
 
-    <h2>3. Technical structure of method or implementation</h2>
-    <p>Describe the technical structure of your method or implementation. 
-      This should be brief, no more than one screenful of webpage text.
-      You may also include an architectural figure in addition to the text.
-      Include a pointer to the code to your implementation.</p>
+</head>
+<body class="nd-docs">
+<div class="nd-pageheader">
+ <div class="container">
+ <h1 class="lead">
+ <nobr class="widenobr">Better Than ReLU? Surveying Modern Activation Functions</nobr>
+ </h1>
+ </div>
+</div><!-- end nd-pageheader -->
 
-    <h2>4. Experimental findings</h2>
-    <p>Report your experimental findings. 
-      This should include graphs or images that visualize the results that you have obtained. 
-      Ideally this will compare your method to some simpler approach (this is called a “baseline” comparison), and/or it should compare your method to a simpler version of your method (this is called an “ablation”).</p>
+<div class="container">
+<div class="row">
+<div class="col justify-content-center text-center">
+<h2>An Analysis of <cite>Searching for Activation Functions</cite></h2>
+<p>Describe the main question that you are asking in your project. Describe the problem that you are taking on that builds on the paper. For example, you can try seeing if the method in the paper can be applied to some new data, or you can measure or visualize the methods of the paper in your own way that varies from what was done in the paper. Or you investigate whether it is possible to build a new application or new method that incorporates or extends the work in the paper.</p>
+</div>
+</div>
+<div class="row">
+<div class="col">
 
-    <h2>5. Conclusions</h2>
-    <p>Summarize your conclusions, including any implications for applications or impacts on society, or ideas for future work.</p>
+<h2>Literature Review</h2>
+<p>Review the paper, i.e, summarize and explain the paper in a paragraph or two, and be sure to include the main takeaways from the paper as you see it. This review should include a couple words that mention how the paper is related to your project.</p>
 
+<h2>Methods</h2>
+<p>Describe the technical structure of your method or implementation. This should be brief, no more than one screenful of webpage text. You may also include an architectural figure in addition to the text. Include a pointer to the code to your implementation.</p>
 
-    <h2>6. References</h2>
+<h2>Experimental Findings</h2>
+<p>Report your experimental findings. This should include graphs or images that visualize the results that you have obtained. Ideally this will compare your method to some simpler approach (this is called a “baseline” comparison), and/or it should compare your method to a simpler version of your method (this is called an “ablation”).</p>
 
-    <p>Cite the main paper that you read, plus any other citations that you've taken as inspiration or otherwise mentioned in your project.</p>
+<h2>Conclusions</h2>
+<p>Summarize your conclusions, including any implications for applications or impacts on society, or ideas for future work.</p>
 
-    <p>[1] First Author, Second Author. Title. <cite>Journal</cite>, Volume:Pages, Year. doi: (doi). URL (url)</p>
-  </body>
+<h2>References</h2>
+<p><a name="ramachandran-2017">[1]</a> <a href="https://arxiv.org/abs/1710.05941">Prajit Ramachandran, Barret Zoph, Quoc V. Le. Searching for Activation Functions.
+  <cite>arXiv preprint arXiv:1710.05941</cite> (2017).</a></p>
+
+<h2>Team Members</h2>                         
+<p>Ryan Dombroski, Tim Wang</p>
+
+  
+</div><!--col-->
+</div><!--row -->
+</div> <!-- container -->
+
+<footer class="nd-pagefooter">
+  <div class="row">
+    <div class="col-6 col-md text-center">
+      <a href="https://ds4440.baulab.info/">About DS 4440</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+<script>
+$(document).on('click', '.clickselect', function(ev) {
+  var range = document.createRange();
+  range.selectNodeContents(this);
+  var sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+});
+// Google analytics below.
+window.dataLayer = window.dataLayer || [];
+</script>
 </html>
