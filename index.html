@@ -33,21 +33,20 @@
 <div class="row">
 <div class="col justify-content-center text-center">
 <h2>An Analysis of <cite>Searching for Activation Functions</cite> by Ramachandran et al. (2017)</h2>
-
 </div>
 </div>
 <div class="row">
 <div class="col">
 
 <h2>Introduction</h2>
-<p>A key component of any neural network is a nonlinear activation function. Due to its simplicity and reliability, the current standard for nonlinear activation functions is the rectified linear unit, or ReLU (Hahnloser et al., 2000; Jarrett et al., 2009; Nair & Hinton, 2010), given by \(f(x) = \max(x, 0)\). Attempts have been made to construct variations on or alternatives to ReLU, but wide adoption of activation functions other than ReLU remains low.</p>
+<p>A key component of any neural network is a nonlinear activation function. Due to its simplicity and reliability, the current standard for nonlinear activation functions is the rectified linear unit, or ReLU (<a href="#hahnloser-2000">Hahnloser et al., 2000</a>; <a href="#jarrett-2009">Jarrett et al., 2009</a>; <a href="#nair-2010">Nair & Hinton, 2010</a>), given by \(f(x) = \max(x, 0)\). Attempts have been made to construct variations on or alternatives to ReLU, but wide adoption of activation functions other than ReLU remains low.</p>
 
-<p>Recent search algorithm based approaches have shown to produce novel activation functions (Zoph & Le, 2016; Bello et al., 2017; Zoph et al., 2017). A variation on the sigmoid linear unit, or SiLU (Hendrycks & Gimpel, 2016) has been found to consistently outperform ReLU and other popular activation functions in accuracy metrics by up to one percent (Ramachandran et al., 2017) on various learning tasks, such as image classification and machine translation.</p>
+<p>Recent search algorithm based approaches have shown to produce novel activation functions (<a href="#zoph-2016">Zoph & Le, 2016</a>; <a href="#bello-2017">Bello et al., 2017</a>; <a href="#zoph-2017">Zoph et al., 2017</a>). A variation on the sigmoid linear unit, or SiLU (<a href="#hendrycks-2016">Hendrycks & Gimpel, 2016</a>) has been found to consistently outperform ReLU and other popular activation functions in accuracy metrics by up to one percent (<a href="ramachandran-2017">Ramachandran et al., 2017</a>) on various learning tasks, such as image classification and machine translation.</p>
   
-<p>In this work we analyze and validate a number of activation functions discovered by search algorithm based approaches. In particular, we take a closer look at the SiLU function, comparing it and other novel activation functions to ReLU, as well as popular activation functions like Leaky ReLU (Maas et al., 2013), Parametric ReLU (He et al., 2015), and Softplus (Nair & Hinton, 2010).</p>
+<p>In this work we analyze and validate a number of activation functions discovered by search algorithm based approaches. In particular, we take a closer look at the SiLU function, comparing it and other novel activation functions to ReLU, as well as popular activation functions like Leaky ReLU (<a href="#maas-2013">Maas et al., 2013</a>), Parametric ReLU (<a href="#he-2015">He et al., 2015</a>), and Softplus (<a href="#nair-2010">Nair & Hinton, 2010</a>).</p>
 
 <h2>Literature Review</h2>
-<p>Ramachandran et. al. employ automated search techniques to discover and evaluate activation functions. This is done by designing a search space consisting of different compositions of unary and binary functions, and using an RNN controller to generate sequences of component functions to compose together. The candidate activation function was then used to train and then evaluate the performance of a child neural network on a learning task, in this case image classification on the CIFAR10 dataset using a ResNet-20 model.</p>
+<p>Ramachandran et. al. employ automated search techniques to discover and evaluate activation functions. This is done by designing a search space consisting of different compositions of unary and binary functions, and using an RNN controller to generate sequences of component functions to compose together. The candidate activation function was then used to train and then evaluate the performance of a child neural network on a learning task, in this case image classification on the CIFAR10 (<a href="#krizhevsky-2009">Krizhevsky & Hinton, 2009</a>) dataset using a ResNet-20 (<a href="#he-2016">He et al., 2016</a>) model.</p>
 
 <p>Among a wide variety of novel activation functions discovered, the best performing functions:
   <ul>
@@ -62,13 +61,13 @@
 <h2>Methods</h2>
 <p>We reproduce selected experiments discussed by Ramachandran et al. to validate the results presented. Several ResNet models were trained on an image classification task using the CIFAR10 dataset, varying the activation function used, as well as the depth of the model. Training loss, test loss, and test accuracy were recorded for each experiment, in addition to total training time. For all experiments we use the model with ReLU as a baseline, the Adam optimizer with PyTorch defaults, and cross entropy as the loss function.</p>
 
-<h3>Choice of activation function</h3>
+<h4>Choice of activation function</h4>
 <p>From the novel activation functions discovered by the search algorithm used by Ramachandran et al., we select three to validate. Additionally, from the other popular activation functions that are also presented, we select three more to validate (Figure).</p>
   
 <p>[Insert graphs of left functions here] [Insert graphs of right functions here]</p>
 <p>Figure. Left: Activation functions found by search algorithm: SiLU, \(\max(x, \sigma(x))\), \(\cos(x) - x\). Right: Activation functions presented in other papers: LReLU, PReLU, Softplus.</p>
 
-<h3>Model parameters</h3>
+<h4>Model parameters</h4>
 <p>We vary the depth of the model to explore how the performance of each activation function scales with the model. Specifically, we train and evaluate each activation function on ResNet models of 20, 32, 44, and 56 layers. Due to limited training resources and time, we were unable to validate on larger models.</p>
 
 <h2>Experimental Findings</h2>
@@ -78,25 +77,29 @@
 <p>Summarize your conclusions, including any implications for applications or impacts on society, or ideas for future work.</p>
 
 <h2>References</h2>
-<p><a name="bello-2017">[1]</a> <a href="https://arxiv.org/abs/1709.07417">Irwan Bello, Barret Zoph, Vijay Vasudevan, and Quoc V Le. Neural optimizer search with reinforcement learning. In <cite>International Conference on Machine Learning</cite>, pp. 459-468, 2017.</a></p>
+<p><a name="bello-2017" href="https://arxiv.org/abs/1709.07417">Irwan Bello, Barret Zoph, Vijay Vasudevan, and Quoc V Le. Neural optimizer search with reinforcement learning. In <cite>International Conference on Machine Learning</cite>, pp. 459-468, 2017.</a></p>
 
-<p><a name="hahnloser-2000">[2]</a> <a href="https://pubmed.ncbi.nlm.nih.gov/10879535/">Richard HR Hahnloser, Rahul Sarpeshkar, Misha A Mahowald, Rodney J Douglas, and H Sebastian Seung. Digital selection and analogue amplification coexist in a cortex-inspired silicon circuit. <cite>Nature</cite>, 405(6789): 947-51, 2000.</a></p>
+<p><a name="hahnloser-2000" href="https://pubmed.ncbi.nlm.nih.gov/10879535/">Richard HR Hahnloser, Rahul Sarpeshkar, Misha A Mahowald, Rodney J Douglas, and H Sebastian Seung. Digital selection and analogue amplification coexist in a cortex-inspired silicon circuit. <cite>Nature</cite>, 405(6789): 947-51, 2000.</a></p>
 
-<p><a name="he-2015">[3]</a> <a href="https://arxiv.org/abs/1502.01852">Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Delving deep into rectifiers: Surpassing human-level performance on imagenet classification. In <cite>Proceedings of the IEEE international conference on computer vision</cite>, pp. 1026-1034, 2015.</a></p>
+<p><a name="he-2015" href="https://arxiv.org/abs/1502.01852">Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Delving deep into rectifiers: Surpassing human-level performance on imagenet classification. In <cite>Proceedings of the IEEE international conference on computer vision</cite>, pp. 1026-1034, 2015.</a></p>
 
-<p><a name="hendrycks-2016">[4]</a> <a href="https://arxiv.org/abs/1606.08415">Dan Hendrycks & Kevin Gimpel. Gaussian error linear units (gelus). <cite>arXiv preprint arXiv:1606.08415</cite>, 2016.</a></p>
+<p><a name="he-2016" href="https://arxiv.org/abs/1512.03385">Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image recognition. In <cite>Proceedings of the IEEE conference on computer vision and pattern recognition</cite>, pp. 770-778, 2016.</a></p>
 
-<p><a name="jarrett-2009">[5]</a> <a href="https://ieeexplore.ieee.org/document/5459469">Kevin Jarrett, Koray Kavukcuoglu, Yann LeCun, et al. What is the best multi-stage architecture for object recognition? In <cite>2009 IEEE 12th International Conference on Computer Vision</cite>, 2009.</a></p>
+<p><a name="hendrycks-2016" href="https://arxiv.org/abs/1606.08415">Dan Hendrycks & Kevin Gimpel. Gaussian error linear units (gelus). <cite>arXiv preprint arXiv:1606.08415</cite>, 2016.</a></p>
 
-<p><a name="maas-2013">[6]</a> <a href="https://www.semanticscholar.org/paper/Rectifier-Nonlinearities-Improve-Neural-Network-Maas/367f2c63a6f6a10b3b64b8729d601e69337ee3cc">Andrew L Maas, Awni Y Hannun, and Andrew Y Ng. Rectifier nonlinearities improve neural network acoustic models. In <cite>International Conference on Machine Learning</cite>, volume 30, 2013.</a></p>
+<p><a name="krizhevsky-2009" href="https://www.semanticscholar.org/paper/Learning-Multiple-Layers-of-Features-from-Tiny-Krizhevsky/5d90f06bb70a0a3dced62413346235c02b1aa086">Alex Krizhevsky and Geoffrey Hinton. Learning multiple layers of features from tiny images. Technical report, Technical report, University of Toronto, 2009.</a></p>
 
-<p><a name="nair-2010">[7]</a> <a href="https://dl.acm.org/doi/10.5555/3104322.3104425">Vinod Nair and Geoffrey E Hinton. Rectified linear units improve restricted boltzmann machines. In <cite>International Conference on Machine Learning</cite>, 2010.</a></p>
+<p><a name="jarrett-2009" href="https://ieeexplore.ieee.org/document/5459469">Kevin Jarrett, Koray Kavukcuoglu, Yann LeCun, et al. What is the best multi-stage architecture for object recognition? In <cite>2009 IEEE 12th International Conference on Computer Vision</cite>, 2009.</a></p>
 
-<p><a name="ramachandran-2017">[8]</a> <a href="https://arxiv.org/abs/1710.05941">Prajit Ramachandran, Barret Zoph, Quoc V. Le. Searching for Activation Functions. <cite>arXiv preprint arXiv:1710.05941</cite>, 2017.</a></p>
+<p><a name="maas-2013" href="https://www.semanticscholar.org/paper/Rectifier-Nonlinearities-Improve-Neural-Network-Maas/367f2c63a6f6a10b3b64b8729d601e69337ee3cc">Andrew L Maas, Awni Y Hannun, and Andrew Y Ng. Rectifier nonlinearities improve neural network acoustic models. In <cite>International Conference on Machine Learning</cite>, volume 30, 2013.</a></p>
 
-<p><a name="zoph-2016">[9]</a> <a href="https://arxiv.org/abs/1611.01578">Barret Zoph and Quoc V Le. Neural architecture search with reinforcement learning. In <cite>International Conference on Learning Representations</cite>, 2016.</a></p>
+<p><a name="nair-2010" href="https://dl.acm.org/doi/10.5555/3104322.3104425">Vinod Nair and Geoffrey E Hinton. Rectified linear units improve restricted boltzmann machines. In <cite>International Conference on Machine Learning</cite>, 2010.</a></p>
 
-<p><a name="zoph-2017">[10]</a> <a href="https://arxiv.org/abs/1707.07012">Barret Zoph, Vijay Vasudevan, Jonathon Shlens, and Quoc V Le. Learning transferable architectures for scalable image recognition. <cite>arXiv preprint arXiv:1707.07012</cite>, 2017.</a></p>
+<p><a name="ramachandran-2017" href="https://arxiv.org/abs/1710.05941">Prajit Ramachandran, Barret Zoph, Quoc V. Le. Searching for Activation Functions. <cite>arXiv preprint arXiv:1710.05941</cite>, 2017.</a></p>
+
+<p><a name="zoph-2016" href="https://arxiv.org/abs/1611.01578">Barret Zoph and Quoc V Le. Neural architecture search with reinforcement learning. In <cite>International Conference on Learning Representations</cite>, 2016.</a></p>
+
+<p><a name="zoph-2017" href="https://arxiv.org/abs/1707.07012">Barret Zoph, Vijay Vasudevan, Jonathon Shlens, and Quoc V Le. Learning transferable architectures for scalable image recognition. <cite>arXiv preprint arXiv:1707.07012</cite>, 2017.</a></p>
 
 <h2>Team Members</h2>                         
 <p>Ryan Dombroski, Tim Wang</p>
