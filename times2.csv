@@ -1,0 +1,5 @@
+,model,time
+0,resnet_20_silu0.5.csv,432.8859237909928
+1,resnet_20_silu1.5.csv,429.55963099999644
+2,resnet_20_silu2.csv,432.1560167919961
+3,resnet_20_lsilu,484.55503041700285
