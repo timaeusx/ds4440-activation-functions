@@ -62,7 +62,13 @@
 <p>The strongest performing activation function discovered was a variation on SiLU, defined as \(f(x) = x \sigma(x).\) It is structurally very similar to ReLU, and able to directly replace ReLU without adjustments to the model architecture. Subsequent empirical validation experiments showed that SiLU outperformed a wide variety of both newly discovered activation functions, as well as popular activation functions presented in other papers.</p>
 
 <h2>Methodology</h2>
+<<<<<<< HEAD
 <p>We reproduce selected experiments discussed by Ramachandran et al. to empirically validate the results presented. Several ResNet models were trained on an image classification task using the CIFAR10 dataset, varying the activation function used, as well as the depth of the model. Training loss, test loss, and test accuracy were recorded for each experiment, in addition to total training time. For all experiments we use the model with ReLU as a baseline, the Adam optimizer with PyTorch defaults, and cross entropy as the loss function. For ResNet, we used this implementation (<a href="#a-martyn">Resnet Implementation, 2019</a>) from Github, and adapted it for our model (also cited in our code). We also used (<a href="#pytorch-2024">Pytorch QuickStart Guide, 2024</a>) and adapted it for our uses (cited in Jupyter notebook as well). For datasets, we used (<a href="#pytorch2-2017">Fashion MNIST</a>) and (<a href="#pytorch3-2017">CIFAR-10, 2017</a>) from the pytorch data library.</p>
+=======
+<p>We reproduce selected experiments discussed by Ramachandran et al. to empirically validate the results presented. Several ResNet models were trained on an image classification task using the CIFAR10 dataset, varying the activation function used, as well as the depth of the model. Training loss, test loss, and test accuracy were recorded for each experiment, in addition to total training time. For all experiments we use the model with ReLU as a baseline, the Adam optimizer with PyTorch defaults, and cross entropy as the loss function.</p>
+
+<p>We adapt Alan Martyn's implementation of the ResNet architecture (<a href="#martyn-2019">Martyn, 2019</a>), and use the <a href="#pytorch-fmnist">Fashion MNIST</a> and <a href="#pytorch-cifar">CIFAR-10</a> datasets available as part of the PyTorch built-in datasets library for initial exploratory analysis, and main empirical validations, respectively.</p>
+>>>>>>> 245ddc5 (pad tables and clean up)
 
 <h4>Choice of activation function</h4>
 <p>From the novel activation functions discovered by the search algorithm used by Ramachandran et al., we select three to validate. These are SiLU, \(\max(x, \sigma(x)),\) and \(\cos x - x.\)</p>
@@ -158,7 +164,7 @@
 
 <p>Interestingly, SiLU networks were consistently faster to train than their ReLU counterparts. In fact, SiLU consistently placed in the top two fastest activation functions in each experiment. This observation suggests that by replacing ReLU with SiLU in neural networks, higher accuracy can be achieved in less time.</p>
 
-<p>ResNet models using \(\cos x - x\) and \(\max(x, \sigma(x)\) as activation functions consistently took the longest to train. This is likely because of the higher complexity of periodic and exponential functions, which require far more additions and multiplications to compute compared to ReLU and ReLU-like functions.</p>
+<p>ResNet models using \(\cos x - x\) and \(\max(x, \sigma(x))\) as activation functions consistently took the longest to train. This is likely because of the higher complexity of periodic and exponential functions, which require far more additions and multiplications to compute compared to ReLU and ReLU-like functions.</p>
 
 <h4>Variation of SiLU parameter</h4>
 <p>Our results suggest that varying \(\beta\) as a fixed or learnable parameter does not significantly influence test accuracy. While leaving \(\beta\) as a learnable parameter started with the highest accuracy, SiLU with fixed \(\beta = 2\) achieved the highest final test accuracy.</p>
@@ -236,23 +242,16 @@
 
 <p><a name="zoph-2017" href="https://arxiv.org/abs/1707.07012">Barret Zoph, Vijay Vasudevan, Jonathon Shlens, and Quoc V Le. Learning transferable architectures for scalable image recognition. <cite>arXiv preprint arXiv:1707.07012</cite>, 2017.</a></p>
 
-<p><a name="a-martyn" href="https://github.com/a-martyn/resnet/tree/master">ResNet Github Implementation Adapted for Model Training. <cite>Github Resnet Implementation</cite>, 2019</a></p>
+<h2>Additional Citations</h2>
+<p><a name="martyn-2019" href="https://github.com/a-martyn/resnet">Alan Martyn. Deep Residual Learning for Image Recognition: CIFAR-10, PyTorch Implementation. <cite>Github repository https://github.com/a-martyn/resnet</cite>, 2019.</a></p>
 
-<p><a name="pytorch-2024" href="https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html">Pytorch Quickstart Tutorial for Model Training. <cite>Pytorch Tutorial</cite>, 2024</a></p>
+<p><a name="pytorch-fmnist" href="https://pytorch.org/vision/stable/generated/torchvision.datasets.FashionMNIST.html">Pytorch FashionMNIST for Model Training. <cite>Pytorch MNIST</cite>, 2017</a></p>
 
-<p><a name="pytorch2-2017" href="https://pytorch.org/vision/stable/generated/torchvision.datasets.FashionMNIST.html">Pytorch FashionMNIST for Model Training. <cite>Pytorch MNIST</cite>, 2017</a></p>
-
-<p><a name="pytorch3-2017" href="https://pytorch.org/vision/0.17/generated/torchvision.datasets.CIFAR10.html">Pytorch CIFAR10 for Model Training. <cite>Pytorch CIFAR10</cite>, 2017</a></p>
-
-
- 
- 
+<p><a name="pytorch-cifar10" href="https://pytorch.org/vision/0.17/generated/torchvision.datasets.CIFAR10.html">Pytorch CIFAR10 for Model Training. <cite>Pytorch CIFAR10</cite>, 2017</a></p>
   
 </div><!--col-->
 </div><!--row -->
 
- 
-  
 </div><!--col-->
 </div><!--row -->
 </div> <!-- container -->
