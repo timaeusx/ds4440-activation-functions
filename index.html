@@ -42,7 +42,7 @@
 <div class="col">
 
 <h2>Introduction</h2>
-<p>A key component of any neural network is a nonlinear activation function. Due to its simplicity and reliability, the current standard for nonlinear activation functions is the rectified linear unit, or ReLU (<a href="#hahnloser-2000">Hahnloser et al., 2000</a>; <a href="#jarrett-2009">Jarrett et al., 2009</a>; <a href="#nair-2010">Nair & Hinton, 2010</a>), defined as \(f(x) = \max(x, 0)\). Attempts have been made to construct variations on or alternatives to ReLU, but wide adoption of activation functions other than ReLU remains low.</p>
+<p>A key component of any neural network is a nonlinear activation function. Due to its simplicity and reliability, the current standard for nonlinear activation functions is the rectified linear unit, or ReLU (<a href="#hahnloser-2000">Hahnloser et al., 2000</a>; <a href="#jarrett-2009">Jarrett et al., 2009</a>; <a href="#nair-2010">Nair & Hinton, 2010</a>), defined as \(f(x) = \max(x, 0).\) Attempts have been made to construct variations on or alternatives to ReLU, but wide adoption of activation functions other than ReLU remains low.</p>
 
 <p>Recent search algorithm based approaches have shown to produce novel activation functions (<a href="#zoph-2016">Zoph & Le, 2016</a>; <a href="#bello-2017">Bello et al., 2017</a>; <a href="#zoph-2017">Zoph et al., 2017</a>). A variation on the sigmoid linear unit, or SiLU (<a href="#hendrycks-2016">Hendrycks & Gimpel, 2016</a>) has been found to consistently outperform ReLU and other popular activation functions in accuracy metrics by up to one percent (<a href="ramachandran-2017">Ramachandran et al., 2017</a>) on various learning tasks, such as image classification and machine translation.</p>
   
@@ -54,12 +54,12 @@
 <p>Among a wide variety of novel activation functions discovered, the best performing functions:
   <ul>
     <li>are simple compositions of a small number of components,</li>
-    <li>use the untransformed pre-activation as a component in a binary function; that is, have the form \(b(x, g(x))\), and</li>
+    <li>use the untransformed pre-activation as a component in a binary function; that is, have the form \(b(x, g(x)),\) and</li>
     <li>do not use division.</li>
   </ul>
 </p>
 
-<p>The strongest performing activation function discovered was a variation on SiLU, defined as \(f(x) = x \sigma(x)\). It is structurally very similar to ReLU, and able to directly replace ReLU without adjustments to the model architecture. Subsequent empirical validation experiments showed that SiLU outperformed a wide variety of both newly discovered activation functions, as well as popular activation functions presented in other papers.</p>
+<p>The strongest performing activation function discovered was a variation on SiLU, defined as \(f(x) = x \sigma(x).\) It is structurally very similar to ReLU, and able to directly replace ReLU without adjustments to the model architecture. Subsequent empirical validation experiments showed that SiLU outperformed a wide variety of both newly discovered activation functions, as well as popular activation functions presented in other papers.</p>
 
 <h2>Methodology</h2>
 <p>We reproduce selected experiments discussed by Ramachandran et al. to empirically validate the results presented. Several ResNet models were trained on an image classification task using the CIFAR10 dataset, varying the activation function used, as well as the depth of the model. Training loss, test loss, and test accuracy were recorded for each experiment, in addition to total training time. For all experiments we use the model with ReLU as a baseline, the Adam optimizer with PyTorch defaults, and cross entropy as the loss function.</p>
@@ -68,7 +68,7 @@
 <p>From the novel activation functions discovered by the search algorithm used by Ramachandran et al., we select three to validate. Additionally, from the other popular activation functions that are also presented, we select three more to validate (Figure).</p>
 
 <h4>SiLU parameter</h4>
-<p>Ramachandran et al. additionally propose a modification to SiLU that includes a tunable or learnable parameter \(\beta\), used to scale the preactivation value, resulting in the function \(f(x)=x \sigma(\beta x)\). We examine \(\beta\) values of 0.5, 1.0 (as regular SiLU), 1.5, and 2.0 using a ResNet-20 model, and additionally allow the network to learn an optimal \(\beta\) value.</p>
+<p>Ramachandran et al. additionally propose a modification to SiLU that includes a tunable or learnable parameter \(\beta\), used to scale the preactivation value, resulting in the function \(f(x)=x \sigma(\beta x).\) We examine \(\beta\) values of 0.5, 1.0 (as regular SiLU), 1.5, and 2.0 using a ResNet-20 model, and additionally allow the network to learn an optimal \(\beta\) value.</p>
 
 <h4>Model parameters</h4>
 <p>We vary the depth of the model to explore how the performance of each activation function scales with the model. Specifically, we train and evaluate each activation function on ResNet models of 20, 32, 44, and 56 layers. Due to limited training resources and time, we were unable to validate on larger models.</p>
@@ -135,7 +135,7 @@
   <caption>Table 1: Activation function metrics in ResNet-20. See the <a href="https://github.com/timaeusx/ds4440-activation-functions/blob/main/Analysis.ipynb">Analysis</a> notebook for all tables.</caption>
 </table>
 
-<p>We observe that the two activation functions discovered by the search algorithm, \(\cos x - x\)  and \(\max(x, \sigma(x))\), underperformed in all experiments, regardless of model size. These results suggest that these functions make poor choices for activation functions.</p>
+<p>We observe that the two activation functions discovered by the search algorithm, \(\cos x - x\)  and \(\max(x, \sigma(x)),\) underperformed in all experiments, regardless of model size. These results suggest that these functions make poor choices for activation functions.</p>
 
 <h4>Performance over training epochs</h4>
 <p>Speed of convergence is an important performance metric for any neural network. We visualize test accuracy, training loss, and test loss for each activation function over all training epochs. </p>
@@ -162,7 +162,7 @@
 <p>Our results suggest that varying \(\beta\) as a fixed or learnable parameter does not significantly influence test accuracy. While leaving \(\beta\) as a learnable parameter started with the highest accuracy, SiLU with fixed \(\beta = 2\) achieved the highest final test accuracy.</p>
 
 <img src="images/betas.png" width="100%">
-<p>Figure 3: Test accuracy and loss metrics for different values of \(\beta\).</p>
+<p>Figure 3: Test accuracy and loss metrics for different values of \(\beta.\)</p>
 
 <table border="1" class="dataframe, center">
   <thead>
@@ -202,7 +202,7 @@
   <caption>Table 2: SiLU results for different values of \(\beta\).</caption>
 </table>
 
-<p>We conclude that in most cases it suffices to use SiLU with the default value of \(\beta = 1\).</p>
+<p>We conclude that in most cases it suffices to use SiLU with the default value of \(\beta = 1.\)</p>
 
 <h2>Conclusions</h2>
 <p>Our results broadly confirm the conclusions drawn by Ramachandran et al. SiLU consistently outperforms ReLU and other popular activation functions over a variety of contexts and metrics. Most notably, direct replacement of ReLU with SiLU in ResNet models of different sizes resulted in test accuracy improvements of almost two percent. This is significant for what is essentially a one line code change. </p>
