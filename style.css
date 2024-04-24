@@ -67,3 +67,8 @@ h2 {
 nobr.widenobr {
   white-space: normal;
 }
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
