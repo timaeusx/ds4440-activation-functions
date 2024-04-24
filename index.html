@@ -65,7 +65,9 @@
 <p>We reproduce selected experiments discussed by Ramachandran et al. to empirically validate the results presented. Several ResNet models were trained on an image classification task using the CIFAR10 dataset, varying the activation function used, as well as the depth of the model. Training loss, test loss, and test accuracy were recorded for each experiment, in addition to total training time. For all experiments we use the model with ReLU as a baseline, the Adam optimizer with PyTorch defaults, and cross entropy as the loss function.</p>
 
 <h4>Choice of activation function</h4>
-<p>From the novel activation functions discovered by the search algorithm used by Ramachandran et al., we select three to validate. Additionally, from the other popular activation functions that are also presented, we select three more to validate (Figure).</p>
+<p>From the novel activation functions discovered by the search algorithm used by Ramachandran et al., we select three to validate. These are SiLU, \(\max(x, \sigma(x)),\) and \(\cos x - x.\)</p>
+
+<p>Additionally, from the other popular activation functions that are also presented, we select three more to validate. These are Leaky ReLU (LReLU), Parametric ReLU, and Softplus.</p>
 
 <h4>SiLU parameter</h4>
 <p>Ramachandran et al. additionally propose a modification to SiLU that includes a tunable or learnable parameter \(\beta\), used to scale the preactivation value, resulting in the function \(f(x)=x \sigma(\beta x).\) We examine \(\beta\) values of 0.5, 1.0 (as regular SiLU), 1.5, and 2.0 using a ResNet-20 model, and additionally allow the network to learn an optimal \(\beta\) value.</p>
