@@ -67,7 +67,7 @@
 <h4>Choice of activation function</h4>
 <p>From the novel activation functions discovered by the search algorithm used by Ramachandran et al., we select three to validate. These are SiLU, \(\max(x, \sigma(x)),\) and \(\cos x - x.\)</p>
 
-<p>Additionally, from the other popular activation functions that are also presented, we select three more to validate. These are Leaky ReLU (LReLU), Parametric ReLU, and Softplus.</p>
+<p>Additionally, from the other popular activation functions that are also presented, we select three more to validate. These are Leaky ReLU (LReLU), Parametric ReLU (PReLU), and Softplus.</p>
 
 <h4>SiLU parameter</h4>
 <p>Ramachandran et al. additionally propose a modification to SiLU that includes a tunable or learnable parameter \(\beta\), used to scale the preactivation value, resulting in the function \(f(x)=x \sigma(\beta x).\) We examine \(\beta\) values of 0.5, 1.0 (as regular SiLU), 1.5, and 2.0 using a ResNet-20 model, and additionally allow the network to learn an optimal \(\beta\) value.</p>
