@@ -51,7 +51,7 @@
 <h2>Literature Review</h2>
 <p>Ramachandran et. al. employ automated search techniques to discover and evaluate activation functions. This is done by designing a search space consisting of different compositions of unary and binary functions, and using an RNN controller to generate sequences of component functions to compose together. The candidate activation function was then used to train and then evaluate the performance of a child neural network on a learning task, in this case image classification on the CIFAR10 (<a href="#krizhevsky-2009">Krizhevsky & Hinton, 2009</a>) dataset using a ResNet-20 (<a href="#he-2016">He et al., 2016</a>) model.</p>
 
-<p>Among a wide variety of novel activation functions discovered, the best performing functions:
+<p>Among a wide variety of novel activation functions discovered by Ramachandran et. al., they found that the best performing functions:
   <ul>
     <li>are simple compositions of a small number of components,</li>
     <li>use the untransformed pre-activation as a component in a binary function; that is, have the form \(b(x, g(x)),\) and</li>
