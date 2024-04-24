@@ -63,6 +63,9 @@
 
 <h4>Choice of activation function</h4>
 <p>From the novel activation functions discovered by the search algorithm used by Ramachandran et al., we select three to validate. Additionally, from the other popular activation functions that are also presented, we select three more to validate (Figure).</p>
+
+<h4>SiLU parameter</h4>
+<p>Ramachandran et al. additionally propose a modification to SiLU that includes a tunable or learnable parameter \(\beta\), used to scale the preactivation value, resulting in the function \(f(x)=x \sigma(\beta x)\). We examine \(\beta\) values of 0.5, 1.0 (as regular SiLU), 1.5, and 2.0 using a ResNet-20 model, and additionally allow the network to learn an optimal \(\beta\) value.</p>
   
 <p>[Insert graphs of left functions here] [Insert graphs of right functions here]</p>
 <p>Figure. Left: Activation functions found by search algorithm: SiLU, \(\max(x, \sigma(x))\), \(\cos(x) - x\). Right: Activation functions presented in other papers: LReLU, PReLU, Softplus.</p>
@@ -72,10 +75,36 @@
 
 <h2>Experimental Findings</h2>
 <p>All experimental code and analysis is available on <a href="https://github.com/timaeusx/ds4440-activation-functions">GitHub</a>.</p>
-<p>Report your experimental findings. This should include graphs or images that visualize the results that you have obtained. Ideally this will compare your method to some simpler approach (this is called a “baseline” comparison), and/or it should compare your method to a simpler version of your method (this is called an “ablation”).</p>
+
+<h4>SiLU performance</h4>
+<p>The results of our empirical validation broadly support the results presented by Ramachandran et al. In Resnet-20, ResNet-32, and ResNet-44, SiLU achieved the highest test accuracy after 10 epochs, in most cases outperforming the other activation functions. Moreover, we observe lower test loss compared to other activation functions, potentially indicating that SiLU generalizes better.</p>
+
+<p>We observe that the two activation functions discovered by the search algorithm, \(\cos x - x\)  and \(\max(x, \sigma(x)\), underperformed in all experiments, regardless of model size. These results suggest that these functions make poor choices for activation functions.</p>
+
+<h4>Performance over training epocs</h4>
+<p>Speed of convergence is an important performance metric for any neural network. We visualize test accuracy, training loss, and test loss for each activation function over all training epochs. </p>
+
+<p>Figure: Test accuracy, training loss, and test loss for each activation function over all training epochs, for ResNet-44</p>
+
+<p>SiLU consistently stays ahead over almost all metrics. In future work, and with more computing power, it may be fruitful to investigate performance over additional epochs to analyze these trends further.</p>
+
+<h4>Model training times</h4>
+<p>Total training time is also an important metric to explore. Here we visualize differences in training time between the different activation functions for each ResNet model.</p>
+
+<p>Figure: Comparison of total training times for all ResNet models and activation functions. Time is measured in seconds.</p>
+
+<p>Interestingly, SiLU networks were consistently faster to train than their ReLU counterparts. In fact, SiLU consistently placed in the top two fastest activation functions in each experiment. This observation suggests that by replacing ReLU with SiLU in neural networks, higher accuracy can be achieved in less time.</p>
+
+<p>ResNet models using \(\cos x - x\) and \(\max(x, \sigma(x)\) as activation functions consistently took the longest to train. This is likely because of the higher complexity of periodic and exponential functions, which require far more additions and multiplications to compute compared to ReLU and ReLU-like functions.</p>
+
+<h4>Variation of SiLU parameter</h4>
+<p>Our results suggest that varying \(\beta\) as a fixed or learnable parameter does not significantly influence test accuracy. While leaving \(\beta\) as a learnable parameter started with the highest accuracy, SiLU with fixed \(\beta = 2\) achieved the highest final test accuracy.
+</p>
 
 <h2>Conclusions</h2>
-<p>Summarize your conclusions, including any implications for applications or impacts on society, or ideas for future work.</p>
+<p>Our results broadly confirm the conclusions drawn by Ramachandran et al. SiLU consistently outperforms ReLU and other popular activation functions over a variety of contexts and metrics. Most notably, direct replacement of ReLU with SiLU in ResNet models of different sizes resulted in test accuracy improvements of almost two percent. This is significant for what is essentially a one line code change. </p>
+
+<p>Future directions for investigation include extending training to more than 10 epochs, validating a wider variety of novel activation functions discovered by other search based algorithms, and exploring reasons for the decline in SiLU performance as model size increases. Furthermore, in concurrence with Ramachandran et al., we note that further gains are likely to be observed when networks are designed specifically with SiLU in mind.</p>
 
 <h2>References</h2>
 <p><a name="bello-2017" href="https://arxiv.org/abs/1709.07417">Irwan Bello, Barret Zoph, Vijay Vasudevan, and Quoc V Le. Neural optimizer search with reinforcement learning. In <cite>International Conference on Machine Learning</cite>, pp. 459-468, 2017.</a></p>
